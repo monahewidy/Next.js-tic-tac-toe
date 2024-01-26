@@ -22,6 +22,7 @@ export default function Home() {
           />
         ))}
       </div>
+      <div>{`It's now ${go} turn!`}</div>
     </div>
   );
 }
