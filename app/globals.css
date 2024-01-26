@@ -16,4 +16,17 @@
   width: 100px;
   height: 100px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cross, .circle {
+  font-size: 80px;
+  font-weight: bld;
+}
+.cross{
+  color: red;
+}
+.circle{
+  color: blue;
 }
