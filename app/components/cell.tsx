@@ -7,9 +7,24 @@ type CellProps = {
   cells: string[];
   setCells: Dispatch<SetStateAction<string[]>>;
   cell: string;
+  winningMessage: string;
 };
-const Cell = ({ go, setGo, id, cells, setCells, cell }: CellProps) => {
-  const handleClick = (e) => {
+const Cell = ({
+  go,
+  setGo,
+  id,
+  cells,
+  setCells,
+  cell,
+  winningMessage,
+}: CellProps) => {
+  const handleClick = () => {
+    // if there is winningMessage, so stop clicking and stop (bec, i write just return)
+    // not complete the rest code in handleClick
+    if (winningMessage) {
+      return;
+    }
+
     const notTaken = !cells[id];
     if (notTaken) {
       if (go === "circle") {
