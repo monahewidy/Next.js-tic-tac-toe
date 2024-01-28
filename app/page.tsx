@@ -25,24 +25,25 @@ export default function Home() {
       // every means the rsult will return true if every cell in the cells array = circle & it gives boolean result true or false
       const circleWins = combo.every((cell) => cells[cell] === "circle");
       const crossWins = combo.every((cell) => cells[cell] === "cross");
-      if(circleWins){
-        setWinningMessage("Circle Win!")
-      } else if(crossWins){
-        setWinningMessage("Cross Win!")
+      if (circleWins) {
+        setWinningMessage("Circle Win!");
+      } else if (crossWins) {
+        setWinningMessage("Cross Win!");
       }
     });
     // here useEffect depents on cells , if all cells are filled
   }, [cells]);
 
-  useEffect (()=>{
+  useEffect(() => {
     // the idea of logic here are there are not empty all cells are full and there is not winner
-    if(cells.every((cell) => cell !== "" ) && !winningMessage ){
-      setWinningMessage("Draw!")
+    if (cells.every((cell) => cell !== "") && !winningMessage) {
+      setWinningMessage("Draw!");
     }
     // here useEffect depents on cells , if all cells are filled and there is winningMessage
-  }, [cells, winningMessage])
+  }, [cells, winningMessage]);
   return (
     <div className="container">
+      <h1 className="heading">Tic-Tac-Toe</h1>
       <div className="gameFrame">
         {cells.map((cell, index) => (
           <Cell
@@ -53,9 +54,8 @@ export default function Home() {
             cells={cells}
             setCells={setCells}
             cell={cell}
-            // i need to add it in cell props to stop the clicking on cell if there is winner 
+            // i need to add it in cell props to stop the clicking on cell if there is winner
             winningMessage={winningMessage}
-
           />
         ))}
       </div>
