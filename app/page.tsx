@@ -14,10 +14,16 @@ const winningCombos = [
 ];
 
 export default function Home() {
-  const [cells, setCells] = useState(["", "", "", "", "", "", "", "", ""]);
-  const [go, setGo] = useState("circle");
+    const initialCells = ["", "", "", "", "", "", "", "", ""];
+    const [cells, setCells] = useState(initialCells);
+    const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState("");
 
+  const resetGame = () => {
+    setCells(initialCells);
+    setGo("circle");
+    setWinningMessage("");
+  };
   // change in state and track state use useEffect
   // check score all changes on cells
   useEffect(() => {
@@ -26,9 +32,9 @@ export default function Home() {
       const circleWins = combo.every((cell) => cells[cell] === "circle");
       const crossWins = combo.every((cell) => cells[cell] === "cross");
       if (circleWins) {
-        setWinningMessage("Circle Win!");
+        setWinningMessage("Circle Win 🎉");
       } else if (crossWins) {
-        setWinningMessage("Cross Win!");
+        setWinningMessage("Cross Win 🎉");
       }
     });
     // here useEffect depents on cells , if all cells are filled
@@ -60,8 +66,10 @@ export default function Home() {
         ))}
       </div>
       <div>{winningMessage}</div>
-      {/* i want the turn message hidde if there is the winner  */}
       {!winningMessage && <div>{`It's now ${go} turn!`}</div>}
+      <button onClick={resetGame} className="resetButton">
+        Reset Game
+      </button>
     </div>
   );
 }
